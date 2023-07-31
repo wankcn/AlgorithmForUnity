@@ -76,5 +76,19 @@ namespace Tree
             else if (e.CompareTo(node.e) > 0) node.right = Add(node.right, e);
             return node;
         }
+
+
+        public bool Contains(E e)
+        {
+            return Contains(root, e);
+        }
+
+        private bool Contains(Node node, E e)
+        {
+            if (node == null) return false;
+            if (e.CompareTo(node.e) == 0) return true;
+            else if (e.CompareTo(node.e) < 0) return Contains(node.left, e);
+            else return Contains(node.right, e);
+        }
     }
 }
